@@ -1,0 +1,22 @@
+#search-box, #search-btn{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+#search-btn:active{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    zoom:0.99;
+}
+
+#search-box{
+
+}
+
+#search-box input:focus{
+    border-color:none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
