@@ -1,3 +1,4 @@
+@import "~nouislider/distribute/nouislider.min.css";
 #myPage{
     background-color: #e9ecef;
 }
@@ -5,4 +6,8 @@ html, body
 {
     height: 100%;
     width: 100%;
+}
+
+.noUi-connect{
+    background: #007bff;
 }

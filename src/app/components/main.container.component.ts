@@ -14,7 +14,6 @@ export class MainContainerComponent implements OnInit {
 
     constructor (private productsService: ProductsService) {}
 
-    // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
     }
 

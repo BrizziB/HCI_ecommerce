@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/header.component';
 import { MainContainerComponent } from './components/main.container.component';
 import { OptionContainerComponent } from './components/option.container.component';
 import { CategoriesComponent } from './components/categories.container.component';
+import { DoubleSliderComponent } from './components/sub-components/double.slider.component';
+import { NouisliderComponent } from 'ng2-nouislider';
+
 
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
@@ -17,7 +20,9 @@ import { CategoriesService } from './services/categories.service';
     HeaderComponent,
     MainContainerComponent,
     OptionContainerComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    DoubleSliderComponent,
+    NouisliderComponent
   ],
   imports: [
     BrowserModule,

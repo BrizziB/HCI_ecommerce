@@ -5,8 +5,16 @@
         
         }
 }
+.option-panel{
+    background-color: #a9c0da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-2em;
+    min-height: 100%;
+}
 
 #main-container{
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     border-top: none;
 }
