@@ -9,7 +9,7 @@ import { Product } from '../model/Product';
 })
 
 export class MainContainerComponent implements OnInit {
-    title = 'BBShop!!';
+    title = 'BBShop';
     products: Product[];
 
     constructor (private productsService: ProductsService) {}
