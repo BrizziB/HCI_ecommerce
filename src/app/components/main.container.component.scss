@@ -11,12 +11,14 @@
     zoom:0.99;
 }
 
-#search-box{
-
-}
-
 #search-box input:focus{
     border-color:none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }

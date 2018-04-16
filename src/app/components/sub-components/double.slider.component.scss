@@ -1,0 +1,23 @@
+@import "~nouislider/distribute/nouislider.min.css";
+
+p{
+    margin-top:4em;
+}
+
+div{
+    min-width: 30em;
+    min-height: 8em;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.noUi-connect{
+    background: #007bff;
+}

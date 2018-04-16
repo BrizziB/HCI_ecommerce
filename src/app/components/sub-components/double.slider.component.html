@@ -1,0 +1,19 @@
+<div class="flex-container">
+    <p>Choose your price range !</p>
+    <div>
+        <nouislider [config]="config" [connect]="true" [min]="min" [max]="max" [step]="10" [(ngModel)]="range" (ngModelChange)="onChange()" (click)="sliderClicked()"></nouislider>
+    </div>
+
+<!--     <div class="form-group">
+        <select [(ngModel)]="min" name="min" (change)="onMinChanged($event.target.value)">
+            <option [value]="" disabled selected> Min: </option>
+            <option *ngFor="let ind of index" [value]="ind">{{ind}} €</option>
+        </select> -->
+<!-- 
+        <select [(ngModel)]="max" name="max" >
+            <option [value]="" disabled selected> Max: </option>
+            <option *ngFor="let ind of index" [value]="ind">{{ind}} €</option>
+        </select> -->
+
+<!--     </div> -->
+</div>
