@@ -24,7 +24,6 @@ export class DoubleSliderComponent implements OnInit { // queste variabili saran
     tooltips: [false, false],
     step: 10,
     start: [0.0, 100.0],
-
     range: {
       min: 0.0,
       max: 200.0
@@ -52,12 +51,12 @@ export class DoubleSliderComponent implements OnInit { // queste variabili saran
       this.range[0] = 0;
     }
     if (this.range[0] <= this.range[1] - this.config.step) { //controllo che non superi l'handle del limite massimo
-      this.range[0] = this.range[0] + (num * this.config.step);
+      this.range[0] = this.range[0] + (num * this.config.step / 2);
 
     } else if (num === 1) {
       this.range[0] = this.range[0];
     } else {
-      this.range[0] = this.range[0] + (num * this.config.step);
+      this.range[0] = this.range[0] + (num * this.config.step / 2);
     }
 
     this.reCreate();
@@ -69,12 +68,12 @@ export class DoubleSliderComponent implements OnInit { // queste variabili saran
       this.range[1] = this.config.range.max;
     }
     if (this.range[1] >= this.range[0] + this.config.step) { //controllo che non vada più in basso dell'handle del limite minimo
-      this.range[1] = this.range[1] + (num * this.config.step);
+      this.range[1] = this.range[1] + (num * this.config.step / 2);
 
     } else if (num === -1) {
       this.range[1] = this.range[1];
     } else {
-      this.range[1] = this.range[1] + (num * this.config.step);
+      this.range[1] = this.range[1] + (num * this.config.step / 2);
     }
     this.reCreate();
   }

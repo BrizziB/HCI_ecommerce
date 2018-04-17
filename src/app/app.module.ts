@@ -10,7 +10,7 @@ import { MainContainerComponent } from './components/main.container.component';
 import { OptionContainerComponent } from './components/option.container.component';
 import { CategoriesComponent } from './components/categories.container.component';
 import { DoubleSliderComponent } from './components/sub-components/double.slider.component';
-
+import { BottomTableComponent } from './components/sub-components/bottom.table.component';
 
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
@@ -22,7 +22,8 @@ import { CategoriesService } from './services/categories.service';
     MainContainerComponent,
     OptionContainerComponent,
     CategoriesComponent,
-    DoubleSliderComponent
+    DoubleSliderComponent,
+    BottomTableComponent
 
   ],
   imports: [

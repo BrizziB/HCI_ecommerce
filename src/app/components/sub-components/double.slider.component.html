@@ -6,7 +6,7 @@
                 <button type="button" class="btn btn-outline-primary price-btn" (click)="minModified(1)">+</button>
                 <button type="button" class="btn btn-outline-primary price-btn" (click)="minModified(-1)">-</button>
             </div>
-            <p class="range-p">{{range[0]}}</p>
+            <p class="range-p">{{range[0] | number : '1.2-2' }} €</p>
         </div>
         <div id="slider-div">
             <nouislider #slider *ngIf="flag" [config]="config" [(ngModel)]="range"></nouislider>
@@ -16,7 +16,7 @@
                 <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(1)">+</button>
                 <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(-1)">-</button>
             </div>
-            <p class="range-p"> {{range[1]}} </p>
+            <p class="range-p"> {{range[1] | number : '1.2-2' }} €</p>
         </div>
     </div>
 

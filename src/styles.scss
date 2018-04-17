@@ -2,11 +2,12 @@
 .noUi-connect{
     background: #007bff;
 }
-#myPage{
+html{
     background-color: #e9ecef;
 }
 html, body
 {
+    overflow: hidden;
     height: 100%;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
