@@ -1,9 +1,58 @@
 #table-outer-div{
     background-color: #a9c0da;
     max-width: 18em;
+    border: 1px lightblue solid;
+    -webkit-box-shadow: 8px 6px -6px black;
+    -moz-box-shadow: 8px 6px -6px black;
+    box-shadow: 8px 6px -6px black;
+}
+
+.carousel-control{
+    z-index: 999;
+}
+
+.img-div{
+    max-width:100%;
+    max-height:100%;
+    padding: 2em;
+    padding-top: 0em;
+    padding-bottom: 1em;
+}
+.img{
+    max-width:100%;
+    max-height:100%;
+}
+
+#title-div{
+    text-align: center;
+    background-color: black;
+    opacity: 0.5;
+    font-size: smaller; 
+    color: white;
+}
+#title-p{
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .carousel-inner{
-    max-width: 10%;
-    max-height: 20em;
+    position: relative;
+    text-align: center;
+    
+}
+
+.img-caption-div{
+    background-color: black;
+    opacity: 0.5;
+    font-size: small; 
+    color: white;
+    width:100%;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom:1em;
+}
+.img-caption-p{
+    margin-bottom: 0em !important;
 }

@@ -15,6 +15,9 @@ export class BottomTableComponent implements OnInit {
     subTitle: String;
     serviceEndPoint: String; // servirà per dirgli che servizio usare, sarè localhost:3030/products/"serviceEndPoint"
 
+    ngOnInit() {
+
+    }
 
 
 }
