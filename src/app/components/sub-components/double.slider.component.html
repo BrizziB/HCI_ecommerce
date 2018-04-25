@@ -1,23 +1,23 @@
 <div class="flex-container-col">
     <p id="slider-title">Choose your price range !</p>
     <div class="flex-container-row">
-        <div class="flex-container-column ">
-            <div id="min-btn" class="btn-group-vertical price-btn-group">
-                <button type="button" class="btn btn-outline-primary price-btn" (click)="minModified(1)">+</button>
-                <button type="button" class="btn btn-outline-primary price-btn" (click)="minModified(-1)">-</button>
-            </div>
+        <div class="price-div">
             <p class="range-p">{{range[0] | number : '1.2-2' }} €</p>
         </div>
         <div id="slider-div">
             <nouislider #slider *ngIf="flag" [config]="config" [(ngModel)]="range"></nouislider>
         </div>
-        <div class="flex-container-column price-btn">
-            <div id="max-btn" class="btn-group-vertical price-btn-group">
-                <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(1)">+</button>
-                <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(-1)">-</button>
-            </div>
+        <div class="price-div">
             <p class="range-p"> {{range[1] | number : '1.2-2' }} €</p>
         </div>
+
     </div>
 
 </div>
+
+
+<!-- bottone per aumentare/diminuire il prezzo-->
+<!--             <div id="max-btn" class="btn-group-vertical price-btn-group">
+        <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(1)">+</button>
+        <button type="button" class="btn btn-outline-primary price-btn" (click)="maxModified(-1)">-</button>
+    </div> -->

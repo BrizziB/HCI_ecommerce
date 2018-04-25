@@ -11,9 +11,13 @@ import { OptionContainerComponent } from './components/option.container.componen
 import { CategoriesComponent } from './components/categories.container.component';
 import { DoubleSliderComponent } from './components/sub-components/double.slider.component';
 import { BottomTableComponent } from './components/sub-components/bottom.table.component';
+import { ProductFormComponent } from './components/sub-components/product.form.component';
+import { ProductListComponent } from './components/product.list.component';
+
 
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { CategoriesService } from './services/categories.service';
     OptionContainerComponent,
     CategoriesComponent,
     DoubleSliderComponent,
-    BottomTableComponent
+    BottomTableComponent,
+    ProductFormComponent,
+    ProductListComponent
 
   ],
   imports: [
