@@ -1,37 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Product } from '../Model/product';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
 @Injectable()
 export class ProductsService {
 
-
     private productsUrl = 'http://localhost:3030/products';
+    private productUrlWithName = 'http://localhost:3030/products?id=';
 
     constructor(private http: HttpClient) { }
 
-    private handleError<T>(operation = 'operation', result?: T) {
+    /**
+    * Handle Http operation that failed.
+    * Let the app continue.
+    * @param operation - name of the operation that failed
+    * @param result - optional value to return as the observable result
+    */
+    private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
 
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
+        // TODO: send the error to remote logging infrastructure
+        console.error(error); // log to console instead
 
-            // TODO: better job of transforming error for user consumption
+        // TODO: better job of transforming error for user consumption
+        //this.log(`${operation} failed: ${error.message}`);
 
-            // Let the app keep running by returning an empty result.
-            return of(result as T);
+        // Let the app keep running by returning an empty result.
+        return of(result as T);
         };
     }
 
-/*     getProductsByCategory(): Observable<Product[]> {
+    getProductsByCategory(): Observable<Product> {
+        return this.http.get<Product>(this.productsUrl).pipe(
+            tap(product => alert('Provata a fare una richiesta'),
+            catchError(this.handleError('getProductsByCategory')))
+        );
+    }
 
-    } */
-
-
+    getProductsByName(prodName): Observable<Product> {
+        return this.http.get<Product>(this.productUrlWithName + prodName).pipe(
+            tap(product => alert('retrieved : '),
+            catchError(this.handleError('getProductsByName')))
+        );
+    }
 }

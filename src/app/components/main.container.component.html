@@ -3,13 +3,38 @@
   <p>Welcome to this rly awwwsome e-Shop</p>
     <div class="d-flex flex-row">
            
+      
       <div id="search-box" class="input-group">
-        <input class="form-control" size="50" placeholder="Search Product" required>
+        <input [(ngModel)]="this.searchtext" class="form-control" size="50"   placeholder="Search Product" required>
       </div>
+      
+      <!-- <input class="form-control" size="50" placeholder="Search Product" required> -->
+
+      <!--
+      <div id="search-component">
+        <h4>Hero Search</h4>
+
+        <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+        <ul class="search-result">
+        <li *ngFor="let hero of heroes$ | async" >
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+        </li>
+        </ul>
+      </div>
+      -->
+
+      
       <div class="input-group-btn">
-        <button type="button" id="search-btn" class=" btn btn-primary"><i class="fas fa-search search-icon"></i></button>
+        <button type="button" id="search-btn" class=" btn btn-primary" (click)="getProductsByName()"><i class="fas fa-search search-icon" ></i></button>
       </div>
     </div>
+
+
+    <!-- barra prezzo-->
     <app-double-slider hidden></app-double-slider>
+    <!-- lista prodotti-->
     <app-product-list> </app-product-list>
 </div>
