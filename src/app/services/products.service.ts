@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Product } from '../Model/product';
+import { ProductWrapper } from '../services/wrappers/product.response.wrapper';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,7 @@ const httpOptions = {
 export class ProductsService {
 
     private productsUrl = 'http://localhost:3030/products';
-    private productUrlWithName = 'http://localhost:3030/products?id=';
+
 
     constructor(private http: HttpClient) { }
 
@@ -23,31 +24,31 @@ export class ProductsService {
     * @param operation - name of the operation that failed
     * @param result - optional value to return as the observable result
     */
-    private handleError<T> (operation = 'operation', result?: T) {
+    private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-
-        // TODO: send the error to remote logging infrastructure
-        console.error(error); // log to console instead
-
-        // TODO: better job of transforming error for user consumption
-        //this.log(`${operation} failed: ${error.message}`);
-
-        // Let the app keep running by returning an empty result.
-        return of(result as T);
+            console.error(error);
+            return of(result as T);
         };
     }
 
-    getProductsByCategory(): Observable<Product> {
-        return this.http.get<Product>(this.productsUrl).pipe(
-            tap(product => alert('Provata a fare una richiesta'),
-            catchError(this.handleError('getProductsByCategory')))
-        );
+    /*     getProductsByCategory(): Observable<Product> {
+            return this.http.get<Product>(this.productsUrl).pipe(
+                tap(product => alert('Provata a fare una richiesta')),
+                catchError(this.handleError('getProductsByCategory')))
+                );
+        } */
+
+    getProductByID(id): Observable<Object> {
+        const queryString = '?id=' + id;
+        return this.http.get(this.productsUrl + queryString);
     }
 
-    getProductsByName(prodName): Observable<Product> {
-        return this.http.get<Product>(this.productUrlWithName + prodName).pipe(
-            tap(product => alert('retrieved : '),
-            catchError(this.handleError('getProductsByName')))
-        );
+    /**
+    * Returns every Product whose name contains the param.
+    * @param name - string contained in every product retrieved
+    */
+    getProductsByName(name): Observable<Object> {
+        const queryString = '?name[$like]=*' + name + '*';
+        return this.http.get(this.productsUrl + queryString);
     }
 }

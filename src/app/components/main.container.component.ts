@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService} from '../services/products.service';
-import { Product } from '../model/Product';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductsService } from '../services/products.service';
+import { Product } from '../model/product';
+import { ProductWrapper } from '../services/wrappers/product.response.wrapper';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,21 +11,21 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class MainContainerComponent implements OnInit {
+    @ViewChild('prodList') prodList ;
     title = 'BBShop';
     products: Product[];
-    searchtext: String;
-    
+    searchTxt: String;
+    tmpProd: Product;
 
-    constructor (private productsService: ProductsService) {}
+    constructor() { }
 
     //eseguito all'inizializzazione
     ngOnInit() {
-        //this.getProductsByName();
     }
-
-    // TODO: provare questa query *star+wars*
-    getProductsByName(): void {
-        this.productsService.getProductsByName(this.searchtext)
+    getProductsByName() {
+        this.prodList.setProdName(this.searchTxt);
+        //qui sotto è temporaneo
+        this.prodList.getProductsByName();
     }
 
 }

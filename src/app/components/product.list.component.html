@@ -1,10 +1,30 @@
 <div id="list-main-div">
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
-    <app-product-form> </app-product-form>
+    <!-- <app-product-form  *ngFor='let product of products'> </app-product-form> -->
+    <!-- per ora invece di usare il componente sostituisco direttamente la parte di html che torna meglio, poi vediamo un po', ci fosse verso di usare il componente sarebbe meglio! -->
+    <div *ngFor='let product of products' id="product-main-div" class="grid-container">
+        <div id="prod-header-div" class="grid-item">
+            {{product.name}} 
+        </div>
+    
+        <div id="prod-body-div" class="grid-item prod-container">
+            <div id="main-img-div" class="grid-item">
+                <img class="img" src={{product.image}}  alt="no img, sry">
+            </div>
+            <div id="main-txt-div" class="grid-item">
+                <p> id: {{product.id}}  </p>
+                <p> Manufacturer: {{product.manufacturer}} </p>
+                <p> Description:</p>
+                <p> {{product.description}} </p>
+            </div>
+        </div>
+    
+        <div id="prod-foot-div" class="grid-item">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">Add To Cart !</button>
+                <button type="button" class="btn btn-primary">Add To Wishlist</button>
+                <button type="button" class="btn btn-danger">Remove from view</button>
+            </div>
+        </div>
+    
+    </div>
 </div>

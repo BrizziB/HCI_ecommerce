@@ -5,26 +5,8 @@
            
       
       <div id="search-box" class="input-group">
-        <input [(ngModel)]="this.searchtext" class="form-control" size="50"   placeholder="Search Product" required>
+        <input [(ngModel)]="this.searchTxt" class="form-control" size="50"   placeholder="Search Product" required>
       </div>
-      
-      <!-- <input class="form-control" size="50" placeholder="Search Product" required> -->
-
-      <!--
-      <div id="search-component">
-        <h4>Hero Search</h4>
-
-        <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-
-        <ul class="search-result">
-        <li *ngFor="let hero of heroes$ | async" >
-        <a routerLink="/detail/{{hero.id}}">
-          {{hero.name}}
-        </a>
-        </li>
-        </ul>
-      </div>
-      -->
 
       
       <div class="input-group-btn">
@@ -36,5 +18,5 @@
     <!-- barra prezzo-->
     <app-double-slider hidden></app-double-slider>
     <!-- lista prodotti-->
-    <app-product-list> </app-product-list>
+    <app-product-list #prodList> </app-product-list>
 </div>
