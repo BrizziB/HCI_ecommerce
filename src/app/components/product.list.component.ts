@@ -15,10 +15,7 @@ import { ProductFormComponent } from './sub-components/product.form.component';
 
 export class ProductListComponent implements OnInit {
 
-    @ViewChildren(ProductFormComponent) productFormChildren: QueryList<ProductFormComponent>;
-
     products: Product[];
-    //formChildren: ProductFormComponent[];
     prodName: String;
 
 
@@ -35,12 +32,6 @@ export class ProductListComponent implements OnInit {
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.products = wrap.data;
-/*                 this.formChildren = this.productFormChildren.toArray();
-                let i = 0;
-                this.formChildren.forEach(form => {
-                    form.product = this.products[i];
-                    i++;
-                }); */
             });
     }
 

@@ -26,6 +26,13 @@
     justify-content: space-evenly    
 }
 
+.option-panel{
+    //max-width: 18%;
+    max-width: 10%; //dopo aver cercato il prodotto
+    display: block; //dopo aver cercato il prodotto
+    overflow: auto;
+}
+
 app-bottom-table{
 
 }

@@ -4,6 +4,7 @@
     <div *ngFor='let product of products' id="product-main-div" class="grid-container">
         <div id="prod-header-div" class="grid-item">
             {{product.name}} 
+            <p> id: {{product.id}}  </p>
         </div>
     
         <div id="prod-body-div" class="grid-item prod-container">
@@ -11,7 +12,8 @@
                 <img class="img" src={{product.image}}  alt="no img, sry">
             </div>
             <div id="main-txt-div" class="grid-item">
-                <p> id: {{product.id}}  </p>
+                <p> Model: {{product.model}}</p>
+                <p> Price: {{product.price}}</p>
                 <p> Manufacturer: {{product.manufacturer}} </p>
                 <p> Description:</p>
                 <p> {{product.description}} </p>
