@@ -9,9 +9,14 @@
     </div>
     <div id="categories-div" class=" container flex-container">
         <!-- questo poi si può mettere che le categorie sono prese da json e generate dinamicamente -->
-        <button *ngFor='let cat of cats' class="btn btn-outline-primary cat-btn" target="_blank">
+        <button *ngFor='let cat of cats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getSubCategories(cat)">
             <i class="fas cat-icon fa-paint-brush"></i>
             <p> {{cat.name}}</p>
+        </button>
+
+        <button *ngFor='let subCat of subCats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getProductBySubCategories(subCat)">
+            <i class="fas cat-icon fa-paint-brush"></i>
+            <p> {{subCat.name}}</p>
         </button>
         
 
