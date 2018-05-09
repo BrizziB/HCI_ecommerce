@@ -9,48 +9,11 @@
     </div>
     <div id="categories-div" class=" container flex-container">
         <!-- questo poi si può mettere che le categorie sono prese da json e generate dinamicamente -->
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
+        <button *ngFor='let cat of cats' class="btn btn-outline-primary cat-btn" target="_blank">
             <i class="fas cat-icon fa-paint-brush"></i>
-            <p> Art & Craft</p>
+            <p> {{cat.name}}</p>
         </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-book"></i>
-            <p> Books </p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-car"></i>
-            <p> Car Accessories</p>
-        </button>
-
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-laptop"></i>
-            <p> Computer</p>
-        </button>
-
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-gift"></i>
-            <p> Gift Ideas</p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-film"></i>
-            <p> Movies</p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-music"></i>
-            <p> Music</p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="far fa-futbol cat-icon"></i>
-            <p> Sport Apparel</p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn" target="_blank">
-            <i class="fas cat-icon fa-mobile-alt"></i>
-            <p> Smartphone</p>
-        </button>
-        <button class="btn btn-outline-primary cat-btn  " target="_blank">
-            <i class="fas fa-desktop cat-icon"></i>
-            <p> TVs</p>
-        </button>
+        
 
     </div>
 

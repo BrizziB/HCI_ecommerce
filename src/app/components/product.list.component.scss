@@ -53,15 +53,12 @@
 
 }
 
-#main-img-div:hover{
-    transform: scale(1.03); ;
-
-}
 #main-txt-div{
     grid-column: 4 / 6;
     grid-row:1;
     overflow: scroll;
 }
+
 .img{
     max-width: 70%;
     max-height: 100%;

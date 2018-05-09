@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-
 import { Category } from '../Model/category';
 
 const httpOptions = {
@@ -30,12 +29,12 @@ export class CategoriesService {
 
     // restituisce la categoria con il nome passato nel paramentro @catName
     // usato per ottenere le sotto-categorie di ogni categoria
-    getCategoryByName(catName): Observable<Category> {
+/*     getCategoryByName(catName): Observable<Category> {
         return this.http.get<Category>(this.categoriesUrl + '/catName').pipe(
             tap(category => alert('retrieved : ' + category.name)),
             catchError(this.handleError('getCategoryByName', new Category()))
         );
-    }
+    } */
 
 
 

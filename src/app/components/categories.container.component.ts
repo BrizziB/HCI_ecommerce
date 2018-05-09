@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Category } from '../model/category';
+import { Category } from '../Model/category';
 import { CategoriesService } from '../services/categories.service';
 
 @Component({
@@ -10,16 +10,18 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  cats: Category;
+  cats: Category[] = [];
 
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-  }
+    this.cats[0] = new Category('TVs');
+    this.cats[1] = new Category('Pappa');
+    }
 
   // per prova
-  getCategoryByName(): void {
+/*   getCategoryByName(): void {
     this.categoriesService.getCategoryByName('Gift Ideas').subscribe(categories => this.cats = categories);
-  }
+  } */
 
 }
