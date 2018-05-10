@@ -41,7 +41,7 @@ export class ProductsService {
     * @param name - string contained in every product retrieved
     */
     getProductsByCategory(name): Observable<Object> {
-        const queryString = '?name[$like]=*' + 'star' + '*';
+        const queryString = '?category.name=' + name;
         return this.http.get(this.productsUrl + queryString);
     }
 
