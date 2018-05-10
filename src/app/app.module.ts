@@ -17,6 +17,7 @@ import { ProductListComponent } from './components/product.list.component';
 
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
+import { LocalDataService } from './services/local/local.data.service';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CategoriesService } from './services/categories.service';
   ],
   providers: [
     ProductsService,
-    CategoriesService
+    CategoriesService,
+    LocalDataService
   ],
   bootstrap: [AppComponent]
 })

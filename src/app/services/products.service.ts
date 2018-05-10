@@ -31,13 +31,6 @@ export class ProductsService {
         };
     }
 
-    /*     getProductsByCategory(): Observable<Product> {
-            return this.http.get<Product>(this.productsUrl).pipe(
-                tap(product => alert('Provata a fare una richiesta')),
-                catchError(this.handleError('getProductsByCategory')))
-                );
-        } */
-
     getProductByID(id): Observable<Object> {
         const queryString = '?id=' + id;
         return this.http.get(this.productsUrl + queryString);
@@ -47,6 +40,11 @@ export class ProductsService {
     * Returns every Product whose name contains the param.
     * @param name - string contained in every product retrieved
     */
+    getProductsByCategory(name): Observable<Object> {
+        const queryString = '?name[$like]=*' + 'star' + '*';
+        return this.http.get(this.productsUrl + queryString);
+    }
+
     getProductsByName(name): Observable<Object> {
         const queryString = '?name[$like]=*' + name + '*';
         return this.http.get(this.productsUrl + queryString);
