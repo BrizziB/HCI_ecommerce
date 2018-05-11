@@ -8,18 +8,27 @@
         <h4 id="title" style="color: #343a40; font-family:'Courier New', Courier, monospace; font-weight: bold">You can start your quest from a category</h4>
     </div>
     <div id="categories-div" class=" container flex-container">
-        <!-- questo poi si può mettere che le categorie sono prese da json e generate dinamicamente -->
-        <button *ngFor='let cat of cats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getSubCategories(cat)">
-            <i class="fas cat-icon fa-paint-brush"></i>
-            <p> {{cat.name}}</p>
-        </button>
-        <!-- poi fai in modo che le categorie spariscono   -->
 
-        <button *ngFor='let subCat of subCats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getProductBySubCategories(subCat)">
+        <button *ngIf="isOn"  class="btn btn-outline-primary cat-btn" target="_blank" (click)="isOn= false">
             <i class="fas cat-icon fa-paint-brush"></i>
-            <p> {{subCat.name}}</p>
+            <p> Torna alle categorie</p>
         </button>
-        
+
+        <ng-container *ngIf="!isOn">
+            <!-- questo poi si può mettere che le categorie sono prese da json e generate dinamicamente -->
+            <button  *ngFor='let cat of cats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getSubCategories(cat)"
+            (click)="isOn= true">
+                <i class="fas cat-icon fa-paint-brush"></i>
+                <p> {{cat.name}}</p>
+            </button>
+        </ng-container>
+
+        <ng-container *ngIf="isOn">
+            <button *ngFor='let subCat of subCats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getProductBySubCategories(subCat)" (click)="isOn= true" >
+                <i class="fas cat-icon fa-paint-brush"></i>
+                <p> {{subCat.name}}</p>
+            </button>
+        </ng-container>
 
     </div>
 
