@@ -24,11 +24,20 @@
         </ng-container>
 
         <ng-container *ngIf="isOn">
+            <button *ngFor='let subCat of subCats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getSubCategories(subCat)" (click)="isOn= true" >
+                <i class="fas cat-icon fa-paint-brush"></i>
+                <p> {{subCat.name}}</p>
+            </button>
+        </ng-container>
+
+        <!--
+        <ng-container *ngIf="isOn">
             <button *ngFor='let subCat of subCats' class="btn btn-outline-primary cat-btn" target="_blank" (click)="getProductBySubCategories(subCat)" (click)="isOn= true" >
                 <i class="fas cat-icon fa-paint-brush"></i>
                 <p> {{subCat.name}}</p>
             </button>
         </ng-container>
+        -->
 
     </div>
 
