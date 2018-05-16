@@ -42,12 +42,13 @@ export class ProductsService {
     */
     getProductsByCategory(name, lowPrice, highPrice): Observable<Object> {
         const queryString = '?category.name=' + name + '&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice;
+        alert (queryString);
         return this.http.get(this.productsUrl + queryString);
     }
 
     getProductsByName(name, lowPrice, highPrice): Observable<Object> {
-        const queryString = '?name[$like]=*' + name + '*&price[$in]=' + lowPrice + '&price[$in]=' + highPrice;
-        alert (queryString)
+        const queryString = '?name[$like]=*' + name + '*&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice;
+        alert (queryString);
         return this.http.get(this.productsUrl + queryString);
     }
 }

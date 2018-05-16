@@ -1,5 +1,7 @@
 <div>
         <app-double-slider></app-double-slider>
         <input [(ngModel)]="this.priceRange[0]" class="form-control" (ngModelChange)="updatePriceRange()"   placeholder="min Price" required>
-        <input [(ngModel)]="this.priceRange[1]" class="form-control"    placeholder="Max Price" required>
+        <input [(ngModel)]="this.priceRange[1]" class="form-control"  (ngModelChange)="updatePriceRange()"  placeholder="Max Price" required>
+        <button *ngIf="rangeChanged" type="button" id="search-btn" class=" btn btn-primary" (click)="applyPriceFilter()" > Apply Filter!</button>
+        <button *ngIf="rangeChanged" type="button" id="search-btn" class=" btn btn-primary" (click)="resetPriceFilter()" > Reset Filter!</button>
 </div>

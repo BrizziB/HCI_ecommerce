@@ -29,13 +29,14 @@ export class MainContainerComponent implements OnInit {
     ngOnInit() {
         this.subscription = this.localDataService.tmpPriceObservable.subscribe(range => {
             this.priceRange = range;
-    } );
-}
+            this.localDataService.setPriceRange(range);
+        });
+    }
 
 
-getProductsByName() {
-    this.prodList.setProdName(this.searchTxt);
-        this.prodList.getProductsByName(this.priceRange[0],this.priceRange[1]);
+    getProductsByName() {
+        this.prodList.setProdName(this.searchTxt);
+        this.prodList.getProductsByName();
     }
 
 }

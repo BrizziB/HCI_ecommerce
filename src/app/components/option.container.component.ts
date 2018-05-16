@@ -8,8 +8,9 @@ import { LocalDataService } from '../services/local/local.data.service';
 })
 export class OptionContainerComponent {
 
-    priceRange: Number[] = [0, 120];
+    priceRange: Number[] = [];
     priceOrder: Number;
+    rangeChanged = false;
 
     constructor(private localDataService: LocalDataService) {
         this.localDataService.updatePriceRangeFn = this.updatePriceRange;
@@ -17,6 +18,16 @@ export class OptionContainerComponent {
 
     updatePriceRange() {
         this.localDataService.updatePriceRange(this.priceRange);
+        this.rangeChanged = true;
 
+    }
+
+    resetPriceFilter() {
+        this.priceRange = []; // [0.001, 30000];
+        this.rangeChanged = false;
+    }
+
+    applyPriceFilter() {
+        this.localDataService.productListComponent.filterProductsByPrice(this.priceRange);
     }
 }
