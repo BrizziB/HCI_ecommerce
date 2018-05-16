@@ -22,8 +22,9 @@ export class ProductListComponent implements OnInit {
     products: Product[] = [];
     prodName: String;
     tmpProds: Product[] = [];
-    subscription: Subscription;
-    /* non serve veramente, l'ho messo perchè pare ci sia un bug nel ngServe che non si rende conto
+    prodsSubscription: Subscription;
+    /*dichiarare e definire tmpProdSource non serve veramente,
+     l'ho messo perchè pare ci sia un bug nel ngServe che non si rende conto
      che non sto usando un attributo di questa classe ma di quella di localDataService a riga 41,
      quindi dà errore, anche se poi funziona tutto..
     */
@@ -35,7 +36,8 @@ export class ProductListComponent implements OnInit {
 
     //eseguito all'inizializzazione
     ngOnInit() {
-        this.subscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
+        this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
+
     }
 
     getProductsByCategory(cat: String, ref: ChangeDetectorRef): void {
@@ -46,7 +48,7 @@ export class ProductListComponent implements OnInit {
             });
     }
 
-    // TODO: provare questa query *star+wars*
+
     getProductsByName(): void {
         this.productsService.getProductsByName(this.prodName)
             .subscribe((wrap: ProductWrapper) => {
@@ -54,6 +56,7 @@ export class ProductListComponent implements OnInit {
                 this.products = wrap.data;
             });
     }
+
 
     setProdName(name: String) {
         if (name.length > 0) {

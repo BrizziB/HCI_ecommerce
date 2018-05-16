@@ -14,7 +14,7 @@ export class DoubleSliderComponent implements OnInit { // queste variabili saran
   @ViewChild('slider') slider;
   flag = true;
   index: number[];
-  range = [20.0, 120.0];
+  range = [20.0, 180.0];
   dots = 9;
   config: any = {
     behaviour: 'tap-drag',
