@@ -23,15 +23,15 @@ export class ProductListComponent implements OnInit {
     prodName: String;
     tmpProds: Product[] = [];
     prodsSubscription: Subscription;
-    lowPrice: Number = 0.01;
-    highPrice: Number = 30000;
+    priceRange: Number[];
 
-    /*dichiarare e definire tmpProdSource non serve veramente,
+    /*dichiarare e definire tmpProdSource e optionContainerComponent non serve veramente,
      l'ho messo perchè pare ci sia un bug nel ngServe che non si rende conto
-     che non sto usando un attributo di questa classe ma di quella di localDataService a riga 41,
+     che non sto usando attributi di questa classe ma di quella che esegue effettivamente il codice (LocalDataService),
      quindi dà errore, anche se poi funziona tutto..
     */
     tmpProdsSource = null;
+    optionContainerComponent = null;
 
     constructor(private productsService: ProductsService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
         this.localDataService.updateProdListFn = this.getProductsByCategory;
@@ -40,12 +40,17 @@ export class ProductListComponent implements OnInit {
     //eseguito all'inizializzazione
     ngOnInit() {
         this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
-        this.localDataService.setPriceRange([0.001, 30000]);
         this.localDataService.productListComponent = this;
     }
 
+    getPriceRange() {
+        this.priceRange = this.localDataService.optionContainerComponent.getPriceRange();
+        alert(this.priceRange);
+    }
+
     getProductsByCategory(cat: String): void {
-        this.productsService.getProductsByCategory(cat, this.lowPrice, this.highPrice)
+        const priceRange = this.optionContainerComponent.getPriceRange();
+        this.productsService.getProductsByCategory(cat, priceRange[0], priceRange[1])
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.tmpProdsSource.next(wrap.data);
@@ -55,7 +60,8 @@ export class ProductListComponent implements OnInit {
 
 
     getProductsByName(): void {
-        this.productsService.getProductsByName(this.prodName, this.lowPrice, this.highPrice)
+        this.getPriceRange();
+        this.productsService.getProductsByName(this.prodName, this.priceRange[0], this.priceRange[1])
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.products = wrap.data;

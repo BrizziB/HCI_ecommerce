@@ -18,7 +18,6 @@ export class MainContainerComponent implements OnInit {
     title = 'BBShop';
     products: Product[];
     searchTxt: String;
-    priceRange: Number[];
     tmpProd: Product;
     subscription: Subscription;
 
@@ -27,10 +26,7 @@ export class MainContainerComponent implements OnInit {
 
     //eseguito all'inizializzazione
     ngOnInit() {
-        this.subscription = this.localDataService.tmpPriceObservable.subscribe(range => {
-            this.priceRange = range;
-            this.localDataService.setPriceRange(range);
-        });
+
     }
 
 
