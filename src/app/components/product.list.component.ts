@@ -40,8 +40,8 @@ export class ProductListComponent implements OnInit {
 
     }
 
-    getProductsByCategory(cat: String, ref: ChangeDetectorRef): void {
-        this.productsService.getProductsByCategory(cat)
+    getProductsByCategory(cat: String, lowPrice: Number, highPrice: Number): void {
+        this.productsService.getProductsByCategory(cat, lowPrice, highPrice)
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.tmpProdsSource.next(wrap.data);
@@ -49,8 +49,8 @@ export class ProductListComponent implements OnInit {
     }
 
 
-    getProductsByName(): void {
-        this.productsService.getProductsByName(this.prodName)
+    getProductsByName(lowPrice: Number, highPrice: Number): void {
+        this.productsService.getProductsByName(this.prodName,lowPrice, highPrice)
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.products = wrap.data;

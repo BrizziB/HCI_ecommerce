@@ -40,13 +40,14 @@ export class ProductsService {
     * Returns every Product whose name contains the param.
     * @param name - string contained in every product retrieved
     */
-    getProductsByCategory(name): Observable<Object> {
-        const queryString = '?category.name=' + name;
+    getProductsByCategory(name, lowPrice, highPrice): Observable<Object> {
+        const queryString = '?category.name=' + name + '&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice;
         return this.http.get(this.productsUrl + queryString);
     }
 
-    getProductsByName(name): Observable<Object> {
-        const queryString = '?name[$like]=*' + name + '*';
+    getProductsByName(name, lowPrice, highPrice): Observable<Object> {
+        const queryString = '?name[$like]=*' + name + '*&price[$in]=' + lowPrice + '&price[$in]=' + highPrice;
+        alert (queryString)
         return this.http.get(this.productsUrl + queryString);
     }
 }

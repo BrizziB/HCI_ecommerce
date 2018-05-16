@@ -35,7 +35,7 @@ export class MainContainerComponent implements OnInit {
 
 getProductsByName() {
     this.prodList.setProdName(this.searchTxt);
-    this.prodList.getProductsByName();
-}
+        this.prodList.getProductsByName(this.priceRange[0],this.priceRange[1]);
+    }
 
 }
