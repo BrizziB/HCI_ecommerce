@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit {
   constructor(private categoriesService: CategoriesService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
     this.cats[0] = new Category('TVs');
     this.cats[1] = new Category('Home Theater Systems');
-    this.cats[2] = new Category('Headphones');
+    this.cats[2] = new Category('Headphone');
     this.cats[3] = new Category('Speakers');
     this.cats[4] = new Category('Remote Controls');
     this.cats[5] = new Category('Audio');

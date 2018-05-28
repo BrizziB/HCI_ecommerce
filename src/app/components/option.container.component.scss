@@ -1,7 +1,21 @@
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
   }
+
+input:hover{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.03);
+}
+
 #main-div{
     padding: 2em;
     padding-top: 6em;
+}
+.btn{
+    background-color: #e9ecef;
+    
+}
+span{
+    color:#007bff;
+    font-weight: bold;
 }

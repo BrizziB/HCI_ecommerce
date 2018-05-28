@@ -6,7 +6,7 @@
 
 .cat-icon{
     font-size: 2.5em;
-    color: #007bff;
+    color: #ffffff;
     size: inherit;
 }
 
@@ -18,8 +18,7 @@
     margin-top: 0.5em;
     margin-left: 0.2em;
     height: 6.0em;
-    width: 6.0em;
-    font-weight: 500;
+    width: 6em;
     word-wrap: break-word;
 }
 
@@ -31,16 +30,13 @@
 .cat-btn p{
     word-break: break-word;
     white-space: pre-wrap;
-    font-size: smaller;
     margin-bottom: 0;
 }
 
 .flex-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
+
     word-wrap: break-word;
+    align-items: flex-start;
     
 }
 
@@ -48,8 +44,25 @@
     overflow: auto;
     margin-bottom: 5em;
     margin-top: 3em;
+    min-height: 40em;
 }
 
 #title{
     display: none; //in modalità visualizzazione lista prodotti
+}
+
+p{
+    font-weight: bolder;
+    color: #007bff;
+}
+
+.btn-primary{
+    background-color: #e9ecef;
+}
+
+.btn-primary:hover{
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.03);
+
 }
