@@ -5,13 +5,6 @@
         
         }
 }
-.option-panel{
-    background-color: #007bff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-2em;
-}
 
 #main-container{
     position:relative;
@@ -27,11 +20,32 @@
 }
 
 .option-panel{
-    //max-width: 18%;
-    width: 20%; //dopo aver cercato il prodotto
-    display: block; //dopo aver cercato il prodotto
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-2em;
+    display: block;
     overflow: auto;
 }
+
+.fat-option-panel{
+    -webkit-transition: width 2s;
+    -moz-transition: width 2s;
+    -o-transition: width 2s;
+    transition: width 2s;
+    width: 35%;
+}
+.thin-option-panel{
+    -webkit-transition: width 2s;
+    -moz-transition: width 2s;
+    -o-transition: width 2s;
+    transition: width 2s;
+    width: 20%;
+
+}
+
+
 
 app-bottom-table{
 

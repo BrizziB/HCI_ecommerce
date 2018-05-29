@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div id="page-body" class="d-flex flex-row justify-content-between h-100">
-    <div class="option-panel" id="left-option-panel">
+    <div class="option-panel" [class.fat-option-panel]="!isShowing" [class.thin-option-panel]="isShowing" id="left-option-panel">
         <app-categories-container></app-categories-container>
     </div>
     <div class="w-100 flex-grow" id="main-container">
@@ -11,7 +11,7 @@
             <app-bottom-table class="bottom-table" id="table-news"></app-bottom-table>
         </div>
     </div>
-    <div class="p-2 option-panel" id="right-option-panel">
+    <div class="option-panel" [class.fat-option-panel]="!isShowing" [class.thin-option-panel]="isShowing" id="right-option-panel">
         <app-option-container></app-option-container>
     </div>
 </div>

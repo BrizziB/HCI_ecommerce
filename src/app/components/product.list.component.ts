@@ -45,7 +45,7 @@ export class ProductListComponent implements OnInit {
 
     getPriceRange() {
         this.priceRange = this.localDataService.optionContainerComponent.getPriceRange();
-        alert(this.priceRange);
+        /* alert(this.priceRange); */
     }
 
     getProductsByCategory(cat: String): void {
@@ -79,6 +79,9 @@ export class ProductListComponent implements OnInit {
         //Metti la logica di filtraggio
     }
 
+    resetProducts() {
+        this.products = [];
+    }
 
 }
 

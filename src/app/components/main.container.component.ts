@@ -18,21 +18,44 @@ export class MainContainerComponent implements OnInit {
     title = 'BBShop';
     products: Product[];
     searchTxt: String;
+    oldSearch: String;
     tmpProd: Product;
     subscription: Subscription;
+    isShowing = false;
 
     constructor(private localDataService: LocalDataService) {
     }
 
     //eseguito all'inizializzazione
     ngOnInit() {
+        this.localDataService.mainContainerComponent = this;
+    }
+
+    setChangingText() {
+        if (this.prodList.products.length === 0) {
+            this.isShowing = false;
+        }
 
     }
 
+    deleteProducts() {
+        this.prodList.resetProducts();
+        this.searchTxt = '';
+    }
+
+    setShowing(isShowing) {
+        this.isShowing = isShowing;
+        this.localDataService.rootComponent.setShowing(this.isShowing);
+
+    }
 
     getProductsByName() {
-        this.prodList.setProdName(this.searchTxt);
-        this.prodList.getProductsByName();
+        if (this.searchTxt) {
+            this.prodList.setProdName(this.searchTxt);
+            this.prodList.getProductsByName();
+        }
+        this.oldSearch = this.searchTxt;
+
     }
 
 }
