@@ -2,19 +2,18 @@
    background: white;
    margin: 10px;
    position: absolute;
-   height: 600px;
-   width: 90%;
+   height: 75%;
+   width: 92%;
    padding-right:4%;
    padding-left: 4%;
    overflow: auto;
 }
 
-
 /* da qui definisto lo stile di quello che sarebbe stato il productComponent*/
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    font-family:'Courier New', Courier, monospace;
+    font-family: Arial,sans-serif;
     font-weight: bold;
     margin: 4px;
     padding: 4px;
@@ -56,10 +55,13 @@
 #main-txt-div{
     grid-column: 4 / 6;
     grid-row:1;
-    overflow: scroll;
-}
+    overflow: auto;
+    
+    }
 
 .img{
+    min-width: 160px;
+
     max-width: 70%;
-    max-height: 100%;
+    max-height: 100%; 
 }

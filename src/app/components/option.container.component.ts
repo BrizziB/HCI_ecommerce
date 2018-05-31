@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LocalDataService } from '../services/local/local.data.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class OptionContainerComponent implements OnInit {
     maxPrice = 30000;
     minPrice = 0.01;
     rangeChanged = false;
+
+
 
     constructor(private localDataService: LocalDataService) {
     }

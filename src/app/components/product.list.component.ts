@@ -39,8 +39,19 @@ export class ProductListComponent implements OnInit {
 
     //eseguito all'inizializzazione
     ngOnInit() {
+        window.addEventListener('scroll', this.scroll, true); //third parameter
         this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
         this.localDataService.productListComponent = this;
+    }
+
+    scroll = (): void => {
+        const currentDiv = document.getElementById('list-main-div');
+        const x = currentDiv.scrollTop;
+        const max = currentDiv.scrollHeight;
+        if (x >= 0.95 * (max - 500)) { //condizione bruttina ma dovrebbe andare..
+            this.products = this.products.concat(this.products);
+        }
+
     }
 
     getPriceRange() {
