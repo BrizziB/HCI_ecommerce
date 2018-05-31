@@ -3,12 +3,14 @@
   <p class="" [class.noShow]="isShowing">Welcome to this rly awwwsome e-Shop</p>
     <div class="d-flex flex-row">
       <div id="search-box" class="input-group">
-        <input [(ngModel)]="this.searchTxt" (change)="setChangingText()" class="form-control" size="50" placeholder="Search Product" required>
+        <input [(ngModel)]="this.searchTxt" (change)="setChangingText()" (keydown.enter)="getProductsByName();" 
+        (keydown.enter)="setShowing(true)"
+        class="form-control" size="50" placeholder="Search Product" required>
       </div>
 
       
-      <div class="input-group-btn btn-group">
-        <button type="button" id="search-btn" class=" btn btn-primary"(click)="getProductsByName();"(click)="setShowing(true)">
+      <div class="input-group-btn btn-group" >
+        <button type="button" id="search-btn" class=" btn btn-primary" (click)="getProductsByName();"(click)="setShowing(true)">
           <i class="fas fa-search" ></i>
         </button>
         <button *ngIf="isShowing" type="button" id="search-btn" class=" btn btn-danger"(click)="deleteProducts()"(click)="setShowing(false)">
