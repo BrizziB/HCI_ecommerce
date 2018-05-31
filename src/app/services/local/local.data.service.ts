@@ -23,7 +23,11 @@ export class LocalDataService {
   productListComponent: ProductListComponent;
   optionContainerComponent: OptionContainerComponent;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) { } //NB: productService è usato anche se non si vede
+
+  getProdService(): ProductsService {
+    return this.productsService;
+  }
 
   setShowing() {
     this.rootComponent.setShowing(true);

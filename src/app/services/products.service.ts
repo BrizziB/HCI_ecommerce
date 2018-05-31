@@ -14,7 +14,9 @@ const httpOptions = {
 export class ProductsService {
 
     private productsUrl = 'http://localhost:3030/products';
-
+    lastCalledService: Function;
+    lastCalledServiceParams: String[];
+    skip = 0;
 
     constructor(private http: HttpClient) { }
 
@@ -39,9 +41,11 @@ export class ProductsService {
     /**
     * Returns every Product whose name contains the param.
     * @param name - string contained in every product retrieved
+    * @param skip - is the index of the first element returned by the service
     */
-    getProductsByCategory(name, lowPrice, highPrice): Observable<Object> {
-        const queryString = '?category.name=' + name + '&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice;
+    getProductsByCategory(name, lowPrice, highPrice, skip: number): Observable<Object> {
+        let queryString: String;
+        queryString = '?category.name=' + name + '&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice + '&$skip=' + skip;
         return this.http.get(this.productsUrl + queryString);
     }
 

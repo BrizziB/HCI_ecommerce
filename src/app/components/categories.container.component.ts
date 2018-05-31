@@ -30,20 +30,13 @@ export class CategoriesComponent implements OnInit {
 
   getSubCategories(category: Category) {
     this.localDataService.setShowing();
-    if (this.localDataService.updateProdListFn) {
-      this.localDataService.updateProdListFn(category.name, this.ref);
-    }
 
+    this.localDataService.productListComponent.getProductsByCategory(category.name, true);
     this.categoriesService.getSubCategoriesByName(category.name)
       .subscribe((wrap: CategoryWrapper) => {
         this.subCats = wrap.data[0].subCategories;
       });
   }
 
-
-  // per prova
-  /*   getCategoryByName(): void {
-      this.categoriesService.getCategoryByName('Gift Ideas').subscribe(categories => this.cats = categories);
-    } */
 
 }

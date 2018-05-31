@@ -24,6 +24,10 @@ export class ProductListComponent implements OnInit {
     tmpProds: Product[] = [];
     prodsSubscription: Subscription;
     priceRange: Number[];
+    lastCalledService: Function;
+    lastCalledParam: String;
+    skip = 0;
+    didScroll = false;
 
     /*dichiarare e definire tmpProdSource e optionContainerComponent non serve veramente,
      l'ho messo perchè pare ci sia un bug nel ngServe che non si rende conto
@@ -31,41 +35,58 @@ export class ProductListComponent implements OnInit {
      quindi dà errore, anche se poi funziona tutto..
     */
     tmpProdsSource = null;
-    optionContainerComponent = null;
 
     constructor(private productsService: ProductsService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
-        this.localDataService.updateProdListFn = this.getProductsByCategory;
+        // this.localDataService.updateProdListFn = this.getProductsByCategory;
     }
 
-    //eseguito all'inizializzazione
+    // eseguito all'inizializzazione
     ngOnInit() {
-        window.addEventListener('scroll', this.scroll, true); //third parameter
-        this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
+        window.addEventListener('scroll', this.delayedScroll, true); //third parameter
+        // this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
         this.localDataService.productListComponent = this;
+        setInterval(() => {
+            if (this.didScroll) {
+                this.didScroll = false;
+                this.scroll();
+            }
+        }, 2000);
     }
 
-    scroll = (): void => {
+    delayedScroll = (): void => {
+        this.didScroll = true;
+    }
+
+    scroll() {
         const currentDiv = document.getElementById('list-main-div');
         const x = currentDiv.scrollTop;
         const max = currentDiv.scrollHeight;
-        if (x >= 0.95 * (max - 500)) { //condizione bruttina ma dovrebbe andare..
-            this.products = this.products.concat(this.products);
+        if (x >= 0.965 * (max - 500)) { //condizione bruttina ma dovrebbe andare..
+            const name = this.lastCalledParam;
+            this.lastCalledService(name, false);
         }
-
     }
+
 
     getPriceRange() {
         this.priceRange = this.localDataService.optionContainerComponent.getPriceRange();
         /* alert(this.priceRange); */
     }
 
-    getProductsByCategory(cat: String): void {
-        const priceRange = this.optionContainerComponent.getPriceRange();
-        this.productsService.getProductsByCategory(cat, priceRange[0], priceRange[1])
+    getProductsByCategory(cat: String, isOriginalCall: boolean): void {
+        const priceRange = this.localDataService.optionContainerComponent.getPriceRange();
+        if (isOriginalCall) {
+            this.lastCalledService = this.getProductsByCategory;
+            this.lastCalledParam = cat;
+            this.skip = 0;
+        }
+        else {
+            this.skip = this.skip + 10;
+        }
+        this.productsService.getProductsByCategory(cat, priceRange[0], priceRange[1], this.skip)
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
-                this.tmpProdsSource.next(wrap.data);
-
+                this.products = this.products.concat(wrap.data);
             });
     }
 
