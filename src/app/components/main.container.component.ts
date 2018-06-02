@@ -32,9 +32,9 @@ export class MainContainerComponent implements OnInit {
     }
 
     setChangingText() {
-        if (this.prodList.products.length === 0) {
+/*         if (this.prodList.products.length === 0) {
             this.isShowing = false;
-        }
+        } */
 
     }
 
@@ -44,15 +44,23 @@ export class MainContainerComponent implements OnInit {
     }
 
     setShowing(isShowing) {
-        this.isShowing = isShowing;
-        this.localDataService.rootComponent.setShowing(this.isShowing);
+        if (this.searchTxt) {
+            this.isShowing = isShowing;
+            this.localDataService.rootComponent.setShowing(this.isShowing);
+        }
 
+    }
+    enterKeyPressed() {
+        if (true) {
+            this.setShowing(true);
+            this.getProductsByName();
+        }
     }
 
     getProductsByName() {
         if (this.searchTxt) {
-            this.prodList.setProdName(this.searchTxt);
-            this.prodList.getProductsByName();
+            this.prodList.prodName = this.searchTxt;
+            this.prodList.getProductsByName(this.searchTxt, true);
         }
         this.oldSearch = this.searchTxt;
 

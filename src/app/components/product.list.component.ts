@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class ProductListComponent implements OnInit {
 
     products: Product[] = [];
-    prodName: String;
+    public prodName: String;
     tmpProds: Product[] = [];
     prodsSubscription: Subscription;
     priceRange: Number[];
@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
                 this.didScroll = false;
                 this.scroll();
             }
-        }, 2000);
+        }, 1000);
     }
 
     delayedScroll = (): void => {
@@ -79,6 +79,7 @@ export class ProductListComponent implements OnInit {
             this.lastCalledService = this.getProductsByCategory;
             this.lastCalledParam = cat;
             this.skip = 0;
+            this.products = [];
         }
         else {
             this.skip = this.skip + 10;
@@ -91,12 +92,21 @@ export class ProductListComponent implements OnInit {
     }
 
 
-    getProductsByName(): void {
-        this.getPriceRange();
-        this.productsService.getProductsByName(this.prodName, this.priceRange[0], this.priceRange[1])
+    getProductsByName(name: String, isOriginalCall: boolean): void {
+        const priceRange = this.localDataService.optionContainerComponent.getPriceRange();
+        if (isOriginalCall) {
+            this.lastCalledService = this.getProductsByName;
+            this.lastCalledParam = name;
+            this.skip = 0;
+            this.products = [];
+        }
+        else {
+            this.skip = this.skip + 10;
+        }
+        this.productsService.getProductsByName(name, priceRange[0], priceRange[1], this.skip)
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
-                this.products = wrap.data;
+                this.products = this.products.concat(wrap.data);
             });
     }
 

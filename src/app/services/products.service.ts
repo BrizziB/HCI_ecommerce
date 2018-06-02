@@ -49,8 +49,8 @@ export class ProductsService {
         return this.http.get(this.productsUrl + queryString);
     }
 
-    getProductsByName(name, lowPrice, highPrice): Observable<Object> {
-        const queryString = '?name[$like]=*' + name + '*&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice;
+    getProductsByName(name, lowPrice, highPrice, skip: number): Observable<Object> {
+        const queryString = '?name[$like]=*' + name + '*&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice + '&$skip=' + skip;
         return this.http.get(this.productsUrl + queryString);
     }
 }
