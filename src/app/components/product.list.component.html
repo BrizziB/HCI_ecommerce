@@ -3,30 +3,36 @@
     <!-- per ora invece di usare il componente sostituisco direttamente la parte di html che torna meglio, poi vediamo un po', ci fosse verso di usare il componente sarebbe meglio! -->
     <div *ngFor='let product of products' id="product-main-div" class="grid-container">
         <div id="prod-header-div" class="grid-item">
-            {{product.name}} 
-            <p> id: {{product.id}}  </p>
+            <p>{{product.name}} -
+                <span>Product id: {{product.id}}</span>
+            </p>
         </div>
-    
+
         <div id="prod-body-div" class="grid-item prod-container">
             <div id="main-img-div" class="grid-item">
-                <img class="img" src={{product.image}}  alt="no img, sry">
+                <img class="img" src={{product.image}} alt="there was no image - sorry">
             </div>
             <div id="main-txt-div" class="grid-item">
-                <p> Model: {{product.model}}</p>
-                <p> Price: {{product.price}}</p>
-                <p> Manufacturer: {{product.manufacturer}} </p>
-                <p> Description:</p>
-                <p> {{product.description}} </p>
+                <div id="price-div">
+                    <p> Price: {{product.price}}</p>
+
+                    <span> Model:</span>
+                    <p>{{product.model}}</p>
+                    <span> Manufacturer:</span>
+                    <p>{{product.manufacturer}}</p>
+                    <span> Info:</span>
+                    <br>
+                    <span>{{product.description}}</span>
+                </div>
             </div>
         </div>
-    
+
         <div id="prod-foot-div" class="grid-item">
             <div class="btn-group">
                 <button type="button" class="btn btn-primary">Add To Cart !</button>
-                <button type="button" class="btn btn-primary">Add To Wishlist</button>
-                <button type="button" class="btn btn-danger">Remove from view</button>
+                <button type="button" class="btn btn-danger" (click)="tooCheapPressed(product.price)">Too cheap!</button>
+                <button type="button" class="btn btn-warning" (click)="tooExpensivePressed(product.price)">Too expensive!</button>
             </div>
         </div>
-    
     </div>
 </div>

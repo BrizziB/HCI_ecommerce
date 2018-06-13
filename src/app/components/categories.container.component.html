@@ -3,16 +3,13 @@
         <p class="boh">{{cat}}</p>
     </li>
 </ul> -->
-<div id="cat-main" class="">
-    <div id='cat-title'>
-        <h4 id="title" style="color: #343a40; font-family:'Courier New', Courier, monospace; font-weight: bold">You can start your quest from a category</h4>
-    </div>
-    <div id="categories-div" class=" container flex-container">
-
+<div id="cat-main">
+    
+    <div id="categories-div" class="container flex-container">
+        <h3 id="title"> Categories</h3>
         <button *ngIf="isOn" class="btn btn-primary cat-btn" target="_blank" (click)="isOn= false">
-            <p> Torna alle categorie</p>
+            <p> BACK </p>
         </button>
-
         <ng-container *ngIf="!isOn">
             <!-- questo poi si può mettere che le categorie sono prese da json e generate dinamicamente -->
             <button *ngFor='let cat of cats' class="btn btn-primary cat-btn" target="_blank" (click)="getSubCategories(cat)" (click)="isOn= true">

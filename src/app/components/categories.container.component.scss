@@ -34,21 +34,23 @@
 }
 
 .flex-container{
-
-    word-wrap: break-word;
-    align-items: flex-start;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
 }
 
 #categories-div{
     overflow: auto;
-    margin-bottom: 5em;
-    margin-top: 3em;
+    padding: 2em;
+    padding-top: 6em;
     min-height: 40em;
 }
 
 #title{
-    display: none; //in modalità visualizzazione lista prodotti
+    color: #E9ECF8;
+    text-decoration: underline;
 }
 
 p{

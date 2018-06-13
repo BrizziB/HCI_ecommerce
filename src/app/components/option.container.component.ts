@@ -1,27 +1,33 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewChecked } from '@angular/core';
 import { LocalDataService } from '../services/local/local.data.service';
+import { ProductListComponent } from './product.list.component';
 
 @Component({
     selector: 'app-option-container',
     templateUrl: './option.container.component.html',
     styleUrls: ['./option.container.component.scss']
 })
-export class OptionContainerComponent implements OnInit {
+export class OptionContainerComponent implements OnInit, AfterViewChecked {
 
     priceRange: Number[] = [];
     priceOrder: Number;
     maxPrice = 30000;
     minPrice = 0.01;
     rangeChanged = false;
-
-
+    productList: ProductListComponent;
+    sortingCriteria;
 
     constructor(private localDataService: LocalDataService) {
     }
 
     ngOnInit() {
         this.localDataService.optionContainerComponent = this;
+
     }
+    ngAfterViewChecked() {
+        this.productList = this.localDataService.productListComponent;
+    }
+
 
     getPriceRange(): Number[] {
         if (this.priceRange.length === 0) {
@@ -33,14 +39,26 @@ export class OptionContainerComponent implements OnInit {
         } else { return this.priceRange; }
     }
 
+    sortByHigherPrice() {
+        this.sortingCriteria = 'Higher Price';
+        this.productList.sortProdutcsByHigherPrice();
+        this.productList.lastSortingCriteria = this.productList.sortProdutcsByHigherPrice;
+    }
+    sortByLowerPrice() {
+        this.sortingCriteria = 'Lower Price';
+        this.productList.sortProdutcsByLowerPrice();
+        this.productList.lastSortingCriteria = this.productList.sortProdutcsByLowerPrice;
+    }
 
     resetPriceFilter() {
         this.priceRange = [];
-        this.rangeChanged = false;
+        const param =  this.productList.lastCalledParam;
+        this.productList.lastCalledService(param, true);
     }
 
     applyPriceFilter() {
-        this.localDataService.productListComponent.filterProductsByPrice(this.priceRange);
+        const param =  this.productList.lastCalledParam;
+        this.productList.lastCalledService(param, true);
     }
 
     updatePriceRange() {

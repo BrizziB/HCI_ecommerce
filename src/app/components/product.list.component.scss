@@ -17,7 +17,7 @@
     font-weight: bold;
     margin: 4px;
     padding: 4px;
-  }
+      }
   .grid-container {
     display: grid;
     background-color: #a9c0da;
@@ -25,6 +25,7 @@
     margin: 8px;
     margin-bottom: 2em;
     transition: all .2s ease-in-out;
+    /* max-height: 50%; */
     
   }
   .grid-container:hover{
@@ -40,28 +41,42 @@
 #prod-body-div{
     display: grid;
     grid-template-columns: 60%, 40%;
-    grid-row: 2 / 9;
+    grid-row: 2 / 3;
+    max-height: inherit;
+    overflow: auto;
 }
 #prod-foot-div{
     font-size: xx-small;
-    grid-row: 9  / 10;
+    grid-row: 3/4;
 }
 #main-img-div{
     grid-column: 1 / 4;
     grid-row: 1;
-
 }
-
 #main-txt-div{
-    grid-column: 4 / 6;
-    grid-row:1;
+     grid-column: 4 / 6;
+    grid-row:1; 
     overflow: auto;
     
     }
 
 .img{
-    min-width: 160px;
-
+    min-width: 100px;
     max-width: 70%;
-    max-height: 100%; 
+}
+
+span{
+    font-size: small;
+    font-weight: 400;
+}
+
+#price-div{
+    border: 1px solid darkblue;
+    max-width: 60%;
+    margin-right: 20%;
+    margin-left: 20%; 
+    background: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    padding: 1em;        
+
 }

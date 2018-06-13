@@ -23,18 +23,12 @@ export class ProductListComponent implements OnInit {
     public prodName: String;
     tmpProds: Product[] = [];
     prodsSubscription: Subscription;
-    priceRange: Number[];
+    priceRange: Number[] = [0, 30000];
     lastCalledService: Function;
     lastCalledParam: String;
+    lastSortingCriteria: Function;
     skip = 0;
     didScroll = false;
-
-    /*dichiarare e definire tmpProdSource e optionContainerComponent non serve veramente,
-     l'ho messo perchè pare ci sia un bug nel ngServe che non si rende conto
-     che non sto usando attributi di questa classe ma di quella che esegue effettivamente il codice (LocalDataService),
-     quindi dà errore, anche se poi funziona tutto..
-    */
-    tmpProdsSource = null;
 
     constructor(private productsService: ProductsService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
         // this.localDataService.updateProdListFn = this.getProductsByCategory;
@@ -61,7 +55,7 @@ export class ProductListComponent implements OnInit {
         const currentDiv = document.getElementById('list-main-div');
         const x = currentDiv.scrollTop;
         const max = currentDiv.scrollHeight;
-        if (x >= 0.965 * (max - 500)) { //condizione bruttina ma dovrebbe andare..
+        if (x >= 0.965 * (max - 800)) { //condizione bruttina - rivedila ! 
             const name = this.lastCalledParam;
             this.lastCalledService(name, false);
         }
@@ -70,7 +64,26 @@ export class ProductListComponent implements OnInit {
 
     getPriceRange() {
         this.priceRange = this.localDataService.optionContainerComponent.getPriceRange();
-        /* alert(this.priceRange); */
+    }
+
+    sortProdutcsByLowerPrice() {
+        this.products.sort((prod1, prod2) => {
+            if (prod1.price > prod2.price) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+    }
+
+    sortProdutcsByHigherPrice() {
+        this.products.sort((prod1, prod2) => {
+            if (prod1.price > prod2.price) {
+                return -1;
+            } else {
+                return +1;
+            }
+        });
     }
 
     getProductsByCategory(cat: String, isOriginalCall: boolean): void {
@@ -88,6 +101,9 @@ export class ProductListComponent implements OnInit {
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.products = this.products.concat(wrap.data);
+                if (this.lastSortingCriteria) {
+                    this.lastSortingCriteria();
+                }
             });
     }
 
@@ -107,7 +123,22 @@ export class ProductListComponent implements OnInit {
             .subscribe((wrap: ProductWrapper) => {
                 console.log(wrap);
                 this.products = this.products.concat(wrap.data);
+                if (this.lastSortingCriteria) {
+                    this.lastSortingCriteria();
+                }
             });
+    }
+
+    tooCheapPressed(minPrice: number) {
+        this.priceRange[0] = minPrice;
+        this.localDataService.optionContainerComponent.priceRange[0] = minPrice;
+        this.lastCalledService(this.lastCalledParam, true);
+    }
+
+    tooExpensivePressed(maxPrice: number) {
+        this.priceRange[1] = maxPrice;
+        this.localDataService.optionContainerComponent.priceRange[1] = maxPrice;
+        this.lastCalledService(this.lastCalledParam, true);
     }
 
 
@@ -115,10 +146,6 @@ export class ProductListComponent implements OnInit {
         if (name.length > 0) {
             this.prodName = name;
         }
-    }
-
-    filterProductsByPrice(range: Number[]) {
-        //Metti la logica di filtraggio
     }
 
     resetProducts() {
