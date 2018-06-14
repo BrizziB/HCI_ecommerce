@@ -133,12 +133,14 @@ export class ProductListComponent implements OnInit {
         this.priceRange[0] = minPrice;
         this.localDataService.optionContainerComponent.priceRange[0] = minPrice;
         this.lastCalledService(this.lastCalledParam, true);
+        this.localDataService.optionContainerComponent.resetCheckBox();
     }
 
     tooExpensivePressed(maxPrice: number) {
         this.priceRange[1] = maxPrice;
         this.localDataService.optionContainerComponent.priceRange[1] = maxPrice;
         this.lastCalledService(this.lastCalledParam, true);
+        this.localDataService.optionContainerComponent.resetCheckBox();
     }
 
 

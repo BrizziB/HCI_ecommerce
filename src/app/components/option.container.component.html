@@ -2,7 +2,9 @@
         <app-double-slider hidden></app-double-slider>
         <h3 id="title">Options & Filters</h3>
         <div id="sorting-options-div">
-                <h5> Shown Products are sorted by: <h6>{{sortingCriteria}}</h6></h5>
+                <h5> Shown Products are sorted by:
+                        <h6>{{sortingCriteria}}</h6>
+                </h5>
                 <button class="btn btn-primary cat-btn" target="_blank" (click)="sortByHigherPrice();">
                         Highest Price
                 </button>
@@ -13,10 +15,32 @@
 
         <div id="price-range-div">
                 <h5> Choose a Price Range</h5>
-                <input id="min-price" [(ngModel)]="this.priceRange[0]" class="form-control" (ngModelChange)="updatePriceRange()" type="number" placeholder="min Price   €"
-                        required>
-                <input id="max-price" [(ngModel)]="this.priceRange[1]" class="form-control" (ngModelChange)="updatePriceRange()" type="number" placeholder="max Price   €"
-                        required>
+
+                <label class="radio-container"> 0 - 10  € 
+                        <input id="range-1" type="radio" class="radio-btn" (click)="uncheckRadioBtn($event);" value="1"  name="radio">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="radio-container"> 10 - 50  € 
+                        <input id="range-2" type="radio" class="radio-btn" (click)="uncheckRadioBtn($event);" value="2"  name="radio">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="radio-container"> 50 - 200  € 
+                        <input id="range-3" type="radio" class="radio-btn" (click)="uncheckRadioBtn($event);" value="3"  name="radio">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="radio-container"> 200 - 5.000  € 
+                        <input id="range-4" type="radio" class="radio-btn" (click)="uncheckRadioBtn($event);" value="4"  name="radio">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="radio-container"> 5.000 - 30.000  € 
+                        <input id="range-5" type="radio" class="radio-btn" (click)="uncheckRadioBtn($event);" value="5"  name="radio">
+                        <span class="checkmark"></span>
+                </label>
+                
+                <input id="min-price" [(ngModel)]="this.priceRange[0]" class="form-control" (ngModelChange)="updatePriceRange()" type="number"
+                        placeholder="min Price   €" required>
+                <input id="max-price" [(ngModel)]="this.priceRange[1]" class="form-control" (ngModelChange)="updatePriceRange()" type="number"
+                        placeholder="max Price   €" required>
                 <button type="button" class=" btn btn-primary" (click)="applyPriceFilter()">
                         Apply Filter!
                 </button>

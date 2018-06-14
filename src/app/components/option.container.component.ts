@@ -16,6 +16,7 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
     rangeChanged = false;
     productList: ProductListComponent;
     sortingCriteria;
+    priceRanges = [[0, 10], [10, 50], [50, 200], [200, 5000], [5000, 30000]];
 
     constructor(private localDataService: LocalDataService) {
     }
@@ -50,18 +51,55 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
         this.productList.lastSortingCriteria = this.productList.sortProdutcsByLowerPrice;
     }
 
+    uncheckRadioBtn(event) {
+        switch (event.target.value) {
+            case '1': {
+                this.priceRange = [0, 10];
+                break;
+            }
+            case '2': {
+                this.priceRange = [10, 50];
+                break;
+            }
+            case '3': {
+                this.priceRange = [50, 200];
+                break;
+            }
+            case '4': {
+                this.priceRange = [200, 5000];
+                break;
+            }
+            case '5': {
+                this.priceRange = [5000, 30000];
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    }
+
+    resetCheckBox() {
+        ['range-1', 'range-2', 'range-3', 'range-4', 'range-5'].forEach(function (id) {
+            document.getElementById(id).checked = false;
+        });
+
+    }
+
     resetPriceFilter() {
+        this.resetCheckBox();
         this.priceRange = [];
-        const param =  this.productList.lastCalledParam;
+        const param = this.productList.lastCalledParam;
         this.productList.lastCalledService(param, true);
     }
 
     applyPriceFilter() {
-        const param =  this.productList.lastCalledParam;
+        const param = this.productList.lastCalledParam;
         this.productList.lastCalledService(param, true);
     }
 
     updatePriceRange() {
+        this.resetCheckBox();
         this.rangeChanged = true;
     }
 }
