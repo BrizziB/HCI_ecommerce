@@ -81,7 +81,7 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
 
     resetCheckBox() {
         ['range-1', 'range-2', 'range-3', 'range-4', 'range-5'].forEach(function (id) {
-            document.getElementById(id).checked = false;
+            (<HTMLInputElement>document.getElementById(id)).checked = false;
         });
 
     }

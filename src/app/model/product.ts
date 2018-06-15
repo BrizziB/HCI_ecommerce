@@ -4,7 +4,7 @@ export class Product {
     id: String;
     name: String;
     type: String;
-    price: Number;
+    price;
     description: String;
     manufacturer: String;
     model: String;

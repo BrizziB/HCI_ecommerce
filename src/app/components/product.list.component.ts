@@ -8,7 +8,7 @@ import { ProductFormComponent } from './sub-components/product.form.component';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
-
+import { CartComponent } from './cart.component';
 
 @Component({
     selector: 'app-product-list',
@@ -127,6 +127,11 @@ export class ProductListComponent implements OnInit {
                     this.lastSortingCriteria();
                 }
             });
+    }
+
+    addToCartPressed(product: Product) {
+        alert('Selected product has been added to your Cart');
+        this.localDataService.cartComponent.addProd(product);
     }
 
     tooCheapPressed(minPrice: number) {

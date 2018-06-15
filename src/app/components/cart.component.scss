@@ -1,0 +1,30 @@
+#cart-div{
+    position: absolute;
+    left: 10%;
+    width:80%;
+    height: 60%;
+    top:15%;
+    z-index: 999;
+    background-color: #e9ecef;
+    opacity: 0.95;
+    padding: 2em;
+}
+
+#close-btn{
+    position:absolute;
+    right:0;
+    top: 0;
+    border-radius: 0;
+}
+li{
+    list-style-type: none;
+}
+
+#buy-btn{
+    position: absolute;
+    bottom: 5%;
+    width: 20%;
+    left: 40%;
+    border-radius: 0;
+
+}

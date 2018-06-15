@@ -8,6 +8,7 @@ import { LocalDataService } from '../services/local/local.data.service';
 })
 export class AppComponent implements OnInit {
 
+  shadedScreen = false;
   isShowing = false;
 
   constructor(private localDataService: LocalDataService) {

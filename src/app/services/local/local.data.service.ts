@@ -6,6 +6,7 @@ import { ProductListComponent } from '../../components/product.list.component';
 import { OptionContainerComponent } from '../../components/option.container.component';
 import { AppComponent } from '../../components/app.component';
 import { MainContainerComponent } from '../../components/main.container.component';
+import { CartComponent } from '../../components/cart.component';
 
 @Injectable()
 export class LocalDataService {
@@ -22,10 +23,11 @@ export class LocalDataService {
   mainContainerComponent: MainContainerComponent;
   productListComponent: ProductListComponent;
   optionContainerComponent: OptionContainerComponent;
+  cartComponent: CartComponent;
 
-  constructor(private productsService: ProductsService) { } //NB: productService è usato anche se non si vede
+  constructor(private productsService: ProductsService) { } //NB: productService è usato
 
-  getProdService(): ProductsService {
+  getProdService(): ProductsService { //vecchio modo di farlo, lasciato per ricordarlo ma è meglio quello nuovo usato nel resto dei casi
     return this.productsService;
   }
 

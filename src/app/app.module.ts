@@ -13,7 +13,7 @@ import { DoubleSliderComponent } from './components/sub-components/double.slider
 import { BottomTableComponent } from './components/sub-components/bottom.table.component';
 import { ProductFormComponent } from './components/sub-components/product.form.component';
 import { ProductListComponent } from './components/product.list.component';
-
+import { CartComponent } from './components/cart.component';
 
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
@@ -30,7 +30,8 @@ import { LocalDataService } from './services/local/local.data.service';
     DoubleSliderComponent,
     BottomTableComponent,
     ProductFormComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartComponent
 
   ],
   imports: [

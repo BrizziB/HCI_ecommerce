@@ -41,11 +41,17 @@
     -moz-transition: width 2s;
     -o-transition: width 2s;
     transition: width 2s;
-    width: 15%;
+    width: 20%;
 
 }
 
-
+#shading-div{
+    background:rgba(0,0,0,0.55);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+}
 
 app-bottom-table{
 

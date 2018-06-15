@@ -1,3 +1,6 @@
+<div>
+    <app-cart-component></app-cart-component>
+</div>
 <div id="list-main-div">
     <!-- <app-product-form  *ngFor='let product of products'> </app-product-form> -->
     <!-- per ora invece di usare il componente sostituisco direttamente la parte di html che torna meglio, poi vediamo un po', ci fosse verso di usare il componente sarebbe meglio! -->
@@ -29,9 +32,9 @@
 
         <div id="prod-foot-div" class="grid-item">
             <div class="btn-group">
-                <button type="button" class="btn btn-primary">Add To Cart !</button>
-                <button type="button" class="btn btn-danger" (click)="tooCheapPressed(product.price)">Too cheap!</button>
-                <button type="button" class="btn btn-warning" (click)="tooExpensivePressed(product.price)">Too expensive!</button>
+                <button type="button" class="btn btn-primary" (click)="addToCartPressed(product)">Add To Cart !</button>
+                <button type="button" class="btn btn-danger" (click)="tooCheapPressed(product.price)">Too cheap</button>
+                <button type="button" class="btn btn-warning" (click)="tooExpensivePressed(product.price)">Too expensive</button>
             </div>
         </div>
     </div>
