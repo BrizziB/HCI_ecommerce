@@ -29,6 +29,7 @@ export class ProductListComponent implements OnInit {
     lastSortingCriteria: Function;
     skip = 0;
     didScroll = false;
+    noProdFound = false;
 
     constructor(private productsService: ProductsService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
         // this.localDataService.updateProdListFn = this.getProductsByCategory;
@@ -86,6 +87,14 @@ export class ProductListComponent implements OnInit {
         });
     }
 
+    setProdFound(prodListSize: Number) {
+        if (prodListSize <= 0) {
+            this.noProdFound = true;
+        } else {
+            this.noProdFound = false;
+        }
+    }
+
     getProductsByCategory(cat: String, isOriginalCall: boolean): void {
         const priceRange = this.localDataService.optionContainerComponent.getPriceRange();
         if (isOriginalCall) {
@@ -104,6 +113,8 @@ export class ProductListComponent implements OnInit {
                 if (this.lastSortingCriteria) {
                     this.lastSortingCriteria();
                 }
+                console.log('num products retrieved: '  + this.products.length);
+                this.setProdFound(this.products.length);
             });
     }
 
@@ -126,6 +137,7 @@ export class ProductListComponent implements OnInit {
                 if (this.lastSortingCriteria) {
                     this.lastSortingCriteria();
                 }
+                this.setProdFound(this.products.length);
             });
     }
 

@@ -4,6 +4,8 @@
 <div id="list-main-div">
     <!-- <app-product-form  *ngFor='let product of products'> </app-product-form> -->
     <!-- per ora invece di usare il componente sostituisco direttamente la parte di html che torna meglio, poi vediamo un po', ci fosse verso di usare il componente sarebbe meglio! -->
+    
+    <p id="no-prod-p" *ngIf="noProdFound"> No product matches the search parameters !</p>
     <div *ngFor='let product of products' id="product-main-div" class="grid-container">
         <div id="prod-header-div" class="grid-item">
             <p>{{product.name}} -
