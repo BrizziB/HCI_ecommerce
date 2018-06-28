@@ -142,7 +142,7 @@ export class ProductListComponent implements OnInit {
     }
 
     addToCartPressed(product: Product) {
-        alert('Selected product has been added to your Cart');
+        alert('Selected product added to your Cart');
         this.localDataService.cartComponent.addProd(product);
     }
 

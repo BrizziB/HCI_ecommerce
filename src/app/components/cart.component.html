@@ -1,6 +1,6 @@
 <div *ngIf="showCart" id="cart-div">
     <button id="close-btn" class="btn btn-danger" (click)="hideCart()"> X </button>
-    <h4> These are the produts currently in your shopping-cart: </h4>
+    <h4> Products currently in your shopping-cart: </h4>
     <p *ngIf="emptyCart"> Your Cart is Empty </p>
     <li *ngFor="let product of purchasedProducts">
         <p> {{product.name}} &emsp;  &nbsp;Price: {{product.price}}€ <button id="remove-prod-btn" class="btn btn-sm btn-outline-danger" (click)="removeProd(product)"> X </button> </p>
