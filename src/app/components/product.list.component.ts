@@ -144,6 +144,8 @@ export class ProductListComponent implements OnInit {
     addToCartPressed(product: Product) {
         alert('Selected product added to your Cart');
         this.localDataService.cartComponent.addProd(product);
+        this.localDataService.optionContainerComponent.resetCheckBox();
+        this.localDataService.optionContainerComponent.resetPriceFilter();
     }
 
     tooCheapPressed(minPrice: number) {

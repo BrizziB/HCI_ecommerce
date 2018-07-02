@@ -6,7 +6,8 @@
 <div id="cat-main">
     
     <div id="categories-div" class="container flex-container">
-        <h3 id="title"> Categories</h3>
+        <h3 *ngIf="!isOn" id="title"> Categories</h3>
+        <h5 *ngIf="isOn" > <!-- Selected Category:  -->{{currentCategory}} </h5>
         <button *ngIf="isOn" class="btn btn-primary cat-btn" target="_blank" (click)="isOn= false">
             <p> BACK </p>
         </button>

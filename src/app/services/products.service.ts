@@ -46,6 +46,7 @@ export class ProductsService {
     getProductsByCategory(name, lowPrice, highPrice, skip: number): Observable<Object> {
         let queryString: String;
         queryString = '?category.name=' + name + '&price[$gt]=' + lowPrice + '&price[$lt]=' + highPrice + '&$skip=' + skip;
+        console.log('__ . . :', this.productsUrl + queryString);
         return this.http.get(this.productsUrl + queryString);
     }
 

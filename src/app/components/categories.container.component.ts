@@ -14,6 +14,7 @@ export class CategoriesComponent implements OnInit {
 
   cats: Category[] = [];
   subCats: Category[] = [];
+  currentCategory = 'none';
 
   constructor(private categoriesService: CategoriesService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
     this.cats[0] = new Category('TVs');
@@ -34,7 +35,15 @@ export class CategoriesComponent implements OnInit {
     this.localDataService.productListComponent.getProductsByCategory(category.name, true);
     this.categoriesService.getSubCategoriesByName(category.name)
       .subscribe((wrap: CategoryWrapper) => {
-        this.subCats = wrap.data[0].subCategories;
+        this.currentCategory = category.name.toString();
+        const tmp = [];
+        wrap.data[0].subCategories.forEach(cat => {
+          console.log(cat.name);
+          if (!cat.name.includes('&')) { // c'è un problema con le & ed i servizi esposti dal server, non riconosce le &
+            tmp.push(cat);
+          }
+        });
+         this.subCats = tmp;
       });
   }
 

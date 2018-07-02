@@ -108,7 +108,7 @@ h5{
     height: 25px;
     width: 25px;
     background-color: #eee;
-    border-radius: 50%;
+    border-radius: 0%;
 }
 
 /* On mouse-over, add a grey background color */
@@ -118,7 +118,7 @@ h5{
 
 /* When the radio button is checked, add a blue background */
 .radio-container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: rgb(226, 147, 0);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -139,6 +139,16 @@ h5{
 	left: 9px;
 	width: 8px;
 	height: 8px;
-	border-radius: 50%;
+	border-radius: 0%;
 	background: white;
 }
+
+
+
+label{
+    width: 80%;
+}
+
+:checked + label {
+    font-weight: bold;
+  }

@@ -50,7 +50,6 @@
 
 #title{
     color: #E9ECF8;
-    text-decoration: underline;
 }
 
 p{
@@ -67,4 +66,10 @@ p{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.03);
 
+}
+
+h5{
+    font-weight: bold;
+    color: white;
+    text-align: center;
 }

@@ -29,17 +29,11 @@ export class CategoriesService {
 
     getSubCategoriesByName(catName: String): Observable<Object> {
         const queryString = this.categoriesUrl + '?name=' + catName;
+        console.log(queryString);
         return this.http.get(queryString);
     }
 
-    // restituisce la categoria con il nome passato nel paramentro @catName
-    // usato per ottenere le sotto-categorie di ogni categoria
-    /*     getCategoryByName(catName): Observable<Category> {
-            return this.http.get<Category>(this.categoriesUrl + '/catName').pipe(
-                tap(category => alert('retrieved : ' + category.name)),
-                catchError(this.handleError('getCategoryByName', new Category()))
-            );
-        } */
+
 
 
 

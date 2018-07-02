@@ -41,12 +41,12 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
     }
 
     sortByHigherPrice() {
-        this.sortingCriteria = 'Higher Price';
+        this.sortingCriteria = 'Highest Price';
         this.productList.sortProdutcsByHigherPrice();
         this.productList.lastSortingCriteria = this.productList.sortProdutcsByHigherPrice;
     }
     sortByLowerPrice() {
-        this.sortingCriteria = 'Lower Price';
+        this.sortingCriteria = 'Lowest Price';
         this.productList.sortProdutcsByLowerPrice();
         this.productList.lastSortingCriteria = this.productList.sortProdutcsByLowerPrice;
     }
@@ -77,6 +77,13 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
                 break;
             }
         }
+
+        const param = this.productList.lastCalledParam;
+        if (param) {
+            this.productList.lastCalledService(param, true);
+        }
+
+
     }
 
     resetCheckBox() {
