@@ -30,6 +30,7 @@ export class ProductListComponent implements OnInit {
     skip = 0;
     didScroll = false;
     noProdFound = false;
+    showImgModal = false;
 
     constructor(private productsService: ProductsService, private localDataService: LocalDataService, private ref: ChangeDetectorRef) {
         // this.localDataService.updateProdListFn = this.getProductsByCategory;

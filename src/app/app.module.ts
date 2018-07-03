@@ -31,7 +31,7 @@ import { LocalDataService } from './services/local/local.data.service';
     BottomTableComponent,
     ProductFormComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
 
   ],
   imports: [

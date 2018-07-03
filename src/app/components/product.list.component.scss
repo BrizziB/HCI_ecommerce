@@ -1,4 +1,5 @@
 #list-main-div{
+   
    background: white;
    margin: 10px;
    position: absolute;
@@ -7,6 +8,7 @@
    padding-right:4%;
    padding-left: 4%;
    overflow: auto;
+
 }
 
 /* da qui definisto lo stile di quello che sarebbe stato il productComponent*/
@@ -19,6 +21,7 @@
     padding: 4px;
       }
   .grid-container {
+
     display: grid;
     background-color: #a9c0da;
     grid-template-rows: 5%, 90%, 5%;
@@ -29,8 +32,9 @@
     
   }
   .grid-container:hover{
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-    /* transform: scale(1.03);  */
+    transform: scale(1.02);
+    transition: all .2s ease-in-out;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   }
 #product-main-div{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -46,8 +50,6 @@
     overflow: auto;
 }
 
-
-
 #prod-foot-div{
     font-size: xx-small;
     grid-row: 3/4;
@@ -60,28 +62,32 @@
 #main-img-div{
     grid-column: 1 / 4;
     grid-row: 1;
+    min-width: 10em;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #ff6200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #main-txt-div{
      grid-column: 4 / 6;
     grid-row:1; 
     overflow: auto;
-    
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #007bff;
     }
-    #main-img-div:hover{
-        transform: scale(1.02);
-        transition: all .2s ease-in-out;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-    
-    }
-    #main-txt-div:hover{
-        transform: scale(1.01);
-        transition: all .2s ease-in-out;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-    }
+
 .img{
     min-width: 100px;
     max-width: 70%;
 }
+/* 
+.img:hover{
+    transform: scale(1.01);
+    transition: all .2s ease-in-out;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+} */
 
 span{
     font-size: small;
@@ -89,13 +95,14 @@ span{
 }
 
 #price-div{
-    border: 1px solid #ff6200;
+    
     max-width: 60%;
     margin-right: 20%;
     margin-left: 20%; 
     background: white;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
     padding: 1em;        
+    max-height: 20em;
 
 }
 #no-prod-p{
@@ -114,7 +121,7 @@ span{
 }
 
 #to-cart-btn:hover{
-    border: 0px solid whitesmoke !important;
+    transform: scale(1.05);
 
 }
 
@@ -138,7 +145,7 @@ span{
     background-color: #db5d03;
     color: white;
     font-weight: 500;
-    border: 0px solid whitesmoke;
+    transform: scale(1.08);
 }
 
 .btn-reset{
