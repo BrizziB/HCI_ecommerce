@@ -4,8 +4,15 @@
 <div id="list-main-div">
     <!-- <app-product-form  *ngFor='let product of products'> </app-product-form> -->
     <!-- per ora invece di usare il componente sostituisco direttamente la parte di html che torna meglio, poi vediamo un po', ci fosse verso di usare il componente sarebbe meglio! -->
-    
-    <p id="no-prod-p" *ngIf="noProdFound"> No product matches the search parameters !</p>
+
+    <div *ngIf="noProdFound">
+        <p id="no-prod-p"> No product matches the search parameters !</p>
+        <p> You can try
+            <button type="button" class=" btn btn-reset" (click)="resetPriceFilter()">
+                Reset Filters
+            </button>
+        </p>
+    </div>
     <div *ngFor='let product of products' id="product-main-div" class="grid-container">
         <div id="prod-header-div" class="grid-item">
             <p>{{product.name}} -
@@ -33,10 +40,10 @@
         </div>
 
         <div id="prod-foot-div" class="grid-item">
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary" (click)="addToCartPressed(product)">Add To Cart !</button>
-                <button type="button" class="btn btn-danger" (click)="tooCheapPressed(product.price)">Too cheap</button>
-                <button type="button" class="btn btn-warning" (click)="tooExpensivePressed(product.price)">Too expensive</button>
+            <button id="to-cart-btn" type="button" class="btn  btn-primary" (click)="addToCartPressed(product)">Add To Cart !</button>
+            <div class="btn-group price-ctrl-btn">
+                <button type="button" id="cheap-btn" class="btn btn-sm price-btn" (click)="tooCheapPressed(product.price)">Too cheap</button>
+                <button type="button" id=exp-btn class="btn btn-sm price-btn" (click)="tooExpensivePressed(product.price)">Too expensive</button>
             </div>
         </div>
     </div>

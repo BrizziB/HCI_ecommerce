@@ -30,7 +30,7 @@
   }
   .grid-container:hover{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-    transform: scale(1.03); 
+    /* transform: scale(1.03);  */
   }
 #product-main-div{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -45,9 +45,17 @@
     max-height: inherit;
     overflow: auto;
 }
+
+
+
 #prod-foot-div{
     font-size: xx-small;
     grid-row: 3/4;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    position: relative;
+    min-height: 5.2em !important;
 }
 #main-img-div{
     grid-column: 1 / 4;
@@ -59,7 +67,17 @@
     overflow: auto;
     
     }
-
+    #main-img-div:hover{
+        transform: scale(1.02);
+        transition: all .2s ease-in-out;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    
+    }
+    #main-txt-div:hover{
+        transform: scale(1.01);
+        transition: all .2s ease-in-out;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    }
 .img{
     min-width: 100px;
     max-width: 70%;
@@ -71,7 +89,7 @@ span{
 }
 
 #price-div{
-    border: 1px solid darkblue;
+    border: 1px solid #ff6200;
     max-width: 60%;
     margin-right: 20%;
     margin-left: 20%; 
@@ -84,4 +102,56 @@ span{
     font-size: large;
     font-weight: bold;
     margin: 5em;
+}
+
+#to-cart-btn{
+    position: absolute;
+    left:44%;
+    font-weight: bold;
+    border:1px solid whitesmoke !important;
+    border-radius: 0px;
+
+}
+
+#to-cart-btn:hover{
+    border: 0px solid whitesmoke !important;
+
+}
+
+.price-ctrl-btn{
+    position: absolute;
+    right:5em;
+
+}
+
+.price-btn{
+    background-color: #ff6200;
+    color: white;
+    font-weight: 400;
+    border: 1px solid whitesmoke;
+    margin-right: 1em;
+    margin-top: 0.25em;
+    border-radius: 0px;
+}
+
+.price-btn:hover{
+    background-color: #db5d03;
+    color: white;
+    font-weight: 500;
+    border: 0px solid whitesmoke;
+}
+
+.btn-reset{
+    font-size: medium;
+    color:#db5d03;
+    font-weight: bold;
+    background-color: #e9ecef;
+    width: 9em;
+}
+
+.btn-reset:hover{
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.03);
+
 }

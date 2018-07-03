@@ -52,6 +52,10 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
     }
 
     uncheckRadioBtn(event) {
+        Array.from(document.getElementsByClassName('radio-container')).forEach(element => {
+            element.classList.remove('active-range-label');
+        });
+        event.target.parentElement.classList.add('active-range-label');
         switch (event.target.value) {
             case '1': {
                 this.priceRange = [0, 10];
@@ -106,6 +110,9 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
     }
 
     updatePriceRange() {
+        Array.from(document.getElementsByClassName('radio-container')).forEach(element => {
+            element.classList.remove('active-range-label');
+        });
         this.resetCheckBox();
         this.rangeChanged = true;
     }

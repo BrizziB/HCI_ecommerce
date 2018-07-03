@@ -67,6 +67,13 @@ export class ProductListComponent implements OnInit {
         this.priceRange = this.localDataService.optionContainerComponent.getPriceRange();
     }
 
+    resetPriceFilter() {
+        this.localDataService.optionContainerComponent.resetPriceFilter();
+        Array.from(document.getElementsByClassName('radio-container')).forEach(element => {
+            element.classList.remove('active-range-label');
+        });
+    }
+
     sortProdutcsByLowerPrice() {
         this.products.sort((prod1, prod2) => {
             if (prod1.price > prod2.price) {
@@ -113,7 +120,7 @@ export class ProductListComponent implements OnInit {
                 if (this.lastSortingCriteria) {
                     this.lastSortingCriteria();
                 }
-                console.log('num products retrieved: '  + this.products.length);
+                console.log('num products retrieved: ' + this.products.length);
                 this.setProdFound(this.products.length);
             });
     }

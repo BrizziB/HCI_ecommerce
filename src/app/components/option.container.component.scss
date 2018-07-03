@@ -22,7 +22,7 @@ input:hover{
 }
 .btn{
     font-size: medium;
-    color:#007bff;
+    color:#db5d03;
     font-weight: bold;
     background-color: #e9ecef;
     width: 9em;
@@ -58,26 +58,6 @@ h5{
     align-items: center;
     align-content: space-around;
 }
-
-
-/* .dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-} */
 
 /* The container */
 .radio-container {
@@ -118,7 +98,7 @@ h5{
 
 /* When the radio button is checked, add a blue background */
 .radio-container input:checked ~ .checkmark {
-    background-color: rgb(226, 147, 0);
+    background-color: #ff6200;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -143,12 +123,22 @@ h5{
 	background: white;
 }
 
-
+h6{
+    color: white;
+    font-weight: bold; 
+}
 
 label{
     width: 80%;
+    font-weight: bold;
+    color:whitesmoke;
 }
 
-:checked + label {
+.active-range-label{
+    color: #ff6200;
     font-weight: bold;
-  }
+}
+
+input{
+    font-weight: bold;
+}
