@@ -31,7 +31,7 @@ export class CategoriesComponent implements OnInit {
 
   getSubCategories(category: Category) {
     this.localDataService.setShowing();
-
+    this.localDataService.mainContainerComponent.searchTxt = null;
     this.localDataService.productListComponent.getProductsByCategory(category.name, true);
     this.categoriesService.getSubCategoriesByName(category.name)
       .subscribe((wrap: CategoryWrapper) => {
@@ -39,7 +39,7 @@ export class CategoriesComponent implements OnInit {
         const tmp = [];
         wrap.data[0].subCategories.forEach(cat => {
           console.log(cat.name);
-          if (!cat.name.includes('&')) { // c'è un problema con le & ed i servizi esposti dal server, non riconosce le &
+          if (!cat.name.includes('&')) { // c'è un problema con le "&" che se presenti in categorie o nomi non vengono riconosciute
             tmp.push(cat);
           }
         });
