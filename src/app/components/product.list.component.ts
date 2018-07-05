@@ -39,7 +39,6 @@ export class ProductListComponent implements OnInit {
     // eseguito all'inizializzazione
     ngOnInit() {
         window.addEventListener('scroll', this.delayedScroll, true); //third parameter
-        // this.prodsSubscription = this.localDataService.tmpProdsObservable.subscribe(prods => this.products = prods);
         this.localDataService.productListComponent = this;
         setInterval(() => {
             if (this.didScroll) {

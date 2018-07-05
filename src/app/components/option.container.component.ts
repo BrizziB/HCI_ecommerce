@@ -86,15 +86,15 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
         if (param) {
             this.productList.lastCalledService(param, true);
         }
-
-
     }
 
     resetCheckBox() {
         ['range-1', 'range-2', 'range-3', 'range-4', 'range-5'].forEach(function (id) {
             (<HTMLInputElement>document.getElementById(id)).checked = false;
         });
-
+        Array.from(document.getElementsByClassName('radio-container')).forEach(element => {
+            element.classList.remove('active-range-label');
+        });
     }
 
     resetPriceFilter() {
@@ -110,9 +110,6 @@ export class OptionContainerComponent implements OnInit, AfterViewChecked {
     }
 
     updatePriceRange() {
-        Array.from(document.getElementsByClassName('radio-container')).forEach(element => {
-            element.classList.remove('active-range-label');
-        });
         this.resetCheckBox();
         this.rangeChanged = true;
     }

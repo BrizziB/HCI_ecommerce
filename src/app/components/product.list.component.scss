@@ -3,7 +3,7 @@
    background: white;
    margin: 10px;
    position: absolute;
-   height: 90%;
+   height: 85%;
    width: 92%;
    padding-right:4%;
    padding-left: 4%;
@@ -19,26 +19,27 @@
     font-weight: bold;
     margin: 4px;
     padding: 4px;
-      }
-  .grid-container {
+    }
 
+.grid-container {
     display: grid;
     background-color: #a9c0da;
     grid-template-rows: 5%, 90%, 5%;
     margin: 8px;
     margin-bottom: 2em;
     transition: all .2s ease-in-out;
-    /* max-height: 50%; */
-    
   }
+
   .grid-container:hover{
     transform: scale(1.02);
     transition: all .2s ease-in-out;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   }
+
 #product-main-div{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
+
 #prod-header-div{
     grid-row: 1 / 2;
 }
@@ -49,7 +50,6 @@
     max-height: inherit;
     overflow: auto;
 }
-
 #prod-foot-div{
     font-size: xx-small;
     grid-row: 3/4;
